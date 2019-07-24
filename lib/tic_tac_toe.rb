@@ -70,8 +70,30 @@ class TicTacToe
       move(index, current_player)
       display_board
     else
-      puts "Please enter a number 1-9"
+      turn
     end
   end
+  
+  def won?
+    #iterate through WIN_COMBINATIONS
+    WIN_COMBINATIONS.each do |combo|
+      puts "#{combo}" if (@board[combo[0]] == "X" && @board[combo[1]] == "X" && @board[combo[2]] == "X") || (@board[combo[0]] == "O" && @board[combo[1]] == "O" && @board[combo[2]] == "O")
+    end
+    false
+    # true if @board[win_combinations] = "X" "X" "x" or "O" "O" "O"
+  end
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
 end
