@@ -93,7 +93,7 @@ class TicTacToe
   def over?
     true if won? != nil || draw? == true
   end
-  binding.pry
+  
   def winner
     return nil if won? == nil
     board[won?[0]]
@@ -103,9 +103,8 @@ class TicTacToe
     until over?
       turn
     end
-    
     if won?
-      puts "Congratulations #{winner}"
+      puts "Congratulations #{winner}!"
       elsif draw?
       puts "It's a tie."
     end
