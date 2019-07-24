@@ -43,7 +43,7 @@ class TicTacToe
   
   
   def valid_move?(index)
-    true if index == 0..9 && position_taken?(index) == false
+    true if index.between?(0,8) && position_taken?(index) == false
   end  
   
   def turn_count
@@ -110,4 +110,5 @@ class TicTacToe
       puts "It's a tie."
     end
   end
+
 end
