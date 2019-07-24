@@ -43,7 +43,7 @@ class TicTacToe
   
   
   def valid_move?(index)
-    true if index == 0..9 && position_taken?(index) == false
+    true if index.between?(0,8) && position_taken?(index) == false
   end  
   
   def turn_count
@@ -87,11 +87,11 @@ class TicTacToe
   end
   
   def draw?
-    true if full? == true && won? == nil
+    true if full? == true && !won?
   end
   
   def over?
-    true if won? != nil || draw? == true
+    true if won? || draw?
   end
   
   def winner
@@ -103,11 +103,11 @@ class TicTacToe
     until over?
       turn
     end
-    
     if won?
-      puts "Congratulations #{winner}"
+      puts "Congratulations #{winner}!"
       elsif draw?
-      puts "It's a tie."
+      puts "Cat's Game!"
     end
   end
+
 end
