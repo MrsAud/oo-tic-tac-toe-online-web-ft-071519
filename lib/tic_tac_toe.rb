@@ -93,7 +93,7 @@ class TicTacToe
   def over?
     true if won? != nil || draw? == true
   end
-  
+  binding.pry
   def winner
     return nil if won? == nil
     board[won?[0]]
