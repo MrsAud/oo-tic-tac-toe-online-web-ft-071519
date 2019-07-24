@@ -99,25 +99,16 @@ class TicTacToe
     board[won?[0]]
   end
   
-  #def play
-   # until over?
-    #  turn
-    #end
-    
-    #if won?
-     # puts "Congratulations #{winner}"
-      #elsif draw?
-      #puts "It's a tie."
-    #end
-  #end
-def play
-    while !over? do
+  def play
+    until over?
       turn
     end
+    
     if won?
-      puts "Congratulations #{winner}!"
-    elsif draw?
-      puts "Cat's Game!"
+      puts "Congratulations #{winner}"
+      elsif draw?
+      puts "It's a tie."
     end
   end
+
 end
