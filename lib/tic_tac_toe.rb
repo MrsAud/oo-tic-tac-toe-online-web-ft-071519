@@ -17,11 +17,11 @@ class TicTacToe
     ]
     
   def display_board
-    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
+    puts " #{board[0]} | #{board[1]} | #{board[2]} "
     puts "-----------"
-    puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
+    puts " #{board[3]} | #{board[4]} | #{board[5]} "
     puts "-----------"
-    puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
+    puts " #{board[6]} | #{board[7]} | #{board[8]} "
   end
   
   def input_to_index(input)
@@ -30,11 +30,11 @@ class TicTacToe
   end
   
   def move(index, token = "X")
-    @board[index] = token
+    board[index] = token
   end
   
   def position_taken?(index)
-    if @board[index] == "X" || @board[index] == "O"
+    if board[index] == "X" || board[index] == "O"
       true
     else
       false
@@ -48,7 +48,7 @@ class TicTacToe
   
   def turn_count
     count = 0
-    @board.each do |position|
+    board.each do |position|
       count += 1 if position == "X" || position == "O"
     end
     count
@@ -75,22 +75,29 @@ class TicTacToe
   end
   
   def won?
-    #iterate through WIN_COMBINATIONS
-    WIN_COMBINATIONS.each do |combo|
-      puts "#{combo}" if (@board[combo[0]] == "X" && @board[combo[1]] == "X" && @board[combo[2]] == "X") || (@board[combo[0]] == "O" && @board[combo[1]] == "O" && @board[combo[2]] == "O")
+    WIN_COMBINATIONS.find do |combo|
+      board[combo[0]] == board[combo[1]] &&
+      board[combo[1]] == board[combo[2]] &&
+      position_taken?(combo[0])
     end
-    false
-    # true if @board[win_combinations] = "X" "X" "x" or "O" "O" "O"
   end
   
+  def full?
+    board.all? {|position| position == "X" || position == "O"}
+  end
   
+  def draw?
+    true if full? == true && won? == nil
+  end
   
+  def over?
+    true if won? != nil || draw? == true
+  end
   
-  
-  
-  
-  
-  
+  def winner
+    return nil if won? == nil
+    board[won?[0]]
+  end
   
   
   
